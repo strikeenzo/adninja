@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { AppBar, Navigation, Link, Button } from 'react-toolbox';
 // import { Link } from 'react-router';
 
-import { toggleNavDrawer } from '../redux/actions';
-
 // https://github.com/webpack/webpack/issues/1788
 // stupid webpack issue on circular dependency
 import { authSignoutRequest } from '../../Auth/redux/actions';
@@ -21,6 +19,7 @@ export class Header extends Component {
       return (
         <AppBar title="Ad Ninja">
           <Navigation horizontal>
+            <Link href="/#/profile" label={`Hello ${user.firstName}`} />
             <Button label="Log out" onClick={ logout } icon="exit_to_app" />
           </Navigation>
         </AppBar>

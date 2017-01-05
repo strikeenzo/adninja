@@ -44,7 +44,7 @@ export default class UserController extends BaseAPIController {
         return next(new Error(`Failed to load user ${id}`));
       }
 
-      if (req.user.id !== user.id) {
+      if (req.user.accountId !== user.accountId) {
         return res.status(403).send({
           message: 'You are not authorized'
         });
