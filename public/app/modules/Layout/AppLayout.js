@@ -31,7 +31,7 @@ class AppLayout extends Component {
       <div className={ AppLayoutStyles.layout }>
         <Header />
         <Layout>
-          <Panel>
+          <Panel scrollY>
             <div>
               <div className={ className }>
                 { !loading ? children : (<ProgressBar mode="indeterminate" type="circular" multicolor />) }
