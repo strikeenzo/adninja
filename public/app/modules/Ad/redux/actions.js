@@ -54,12 +54,27 @@ export const AD_LIST_REQUEST = 'ad/list/request';
 export const AD_LIST_SUCCESS = 'ad/list/succes';
 export const AD_LIST_ERROR = 'ad/list/error';
 
-export const adListRequest = createAction(AD_LIST_REQUEST, (id, data) => {
+export const adListRequest = createAction(AD_LIST_REQUEST, (data) => {
   return (dispatch, getState) => {
     const adService = new AdService(dispatch, getState());
-    return adService.list(id, data, {
+    return adService.list(data, {
       SUCCESS: AD_LIST_SUCCESS,
       ERROR: AD_LIST_ERROR
+    });
+  };
+});
+
+// list
+export const AD_ANALYTICS_REQUEST = 'ad/analytics/request';
+export const AD_ANALYTICS_SUCCESS = 'ad/analytics/succes';
+export const AD_ANALYTICS_ERROR = 'ad/analytics/error';
+
+export const adAnalyticsRequest = createAction(AD_ANALYTICS_REQUEST, () => {
+  return (dispatch, getState) => {
+    const adService = new AdService(dispatch, getState());
+    return adService.analytics({
+      SUCCESS: AD_ANALYTICS_SUCCESS,
+      ERROR: AD_ANALYTICS_ERROR
     });
   };
 });

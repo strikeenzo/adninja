@@ -12,14 +12,19 @@ import {
   AD_LIST_REQUEST,
   AD_LIST_SUCCESS,
   AD_LIST_ERROR,
+  AD_ANALYTICS_REQUEST,
+  AD_ANALYTICS_SUCCESS,
+  AD_ANALYTICS_ERROR,
 } from './actions';
 
 export const initialState = {
   ad: null,
   adList: [],
+  analytics: [],
   creating: false,
   editing: false,
   listLoading: false,
+  analyticsLoading: false,
   loading: false
 };
 
@@ -77,5 +82,19 @@ export default handleActions({
   [AD_LIST_ERROR]: (state) => ({
     ...state,
     listLoading: false
+  }),
+  [AD_ANALYTICS_REQUEST]: (state) => ({
+    ...state,
+    analytics: [],
+    analyticsLoading: true
+  }),
+  [AD_ANALYTICS_SUCCESS]: (state, action) => ({
+    ...state,
+    analytics: action.payload,
+    analyticsLoading: false
+  }),
+  [AD_ANALYTICS_ERROR]: (state) => ({
+    ...state,
+    analyticsLoading: false
   })
 }, initialState);

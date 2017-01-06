@@ -4,6 +4,7 @@ export default function (sequelize, DataTypes) {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
+    adId: DataTypes.INTEGER,
     likeAddress: DataTypes.STRING
   }, {
     associate: (models) => {

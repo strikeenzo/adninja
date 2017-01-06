@@ -10,6 +10,9 @@ export default function (app) {
   app.route('/ads/list')
     .post(auth.requiresLogin, ad.list);
 
+  app.route('/ads/analytics')
+    .get(auth.requiresLogin, ad.getCounts);
+
   app.route('/ads/:adId')
     .get(auth.requiresLogin, ad.get)
     .put(auth.requiresLogin, ad.update);

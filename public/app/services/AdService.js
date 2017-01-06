@@ -5,7 +5,11 @@ export default class AdService extends ResourceService {
     super(...args, 'ads');
   }
 
-  list(userId, ...args) {
+  list(...args) {
     return this._post('/ads/list', ...args);
+  }
+
+  analytics(...args) {
+    return this._get('/ads/analytics', ...args);
   }
 }

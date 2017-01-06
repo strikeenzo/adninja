@@ -12,6 +12,7 @@ export default function (sequelize, DataTypes) {
   }, {
     associate: (models) => {
       Ad.belongsTo(models.User, { foreignKey: 'accountId' });
+      Ad.hasMany(models.Click, { foreignKey: 'adId' });
     },
     tableName: 'ad',
     timestamps: true,

@@ -32,6 +32,27 @@ export default class AdController extends BaseAPIController {
     }).catch(err => res.status(400).send(errorHandler(err)));
   }
 
+  getCounts = (req, res) => {
+    const sequelize = this._db.sequelize;
+    this._db.Ad.findAll({
+      attributes: [
+        'adId',
+        'Name',
+        [sequelize.fn('count', sequelize.col('Clicks.clickId')), 'clickCount'],
+      ],
+      include: [this._db.Click],
+      group: [sequelize.col('Ad.adId')],
+      where: {
+        accountId: req.user.accountId
+      }
+    }).then((result) => {
+      res.send(result.map((r) => {
+        const { Clicks, ...values } = r.dataValues; // eslint-disable-line
+        return { ...values };
+      }));
+    }).catch(err => res.status(400).send(errorHandler(err)));
+  }
+
   /**
    * @method create
    * @param {Request} req
